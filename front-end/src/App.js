@@ -32,8 +32,8 @@ function App() {
         "http://" + window.location.hostname + ":8088/process-image",
         {
           image: InputImage,
-          first_name: FirstName,
-          last_name: LastName,
+          name: FirstName,
+          surname: LastName,
           numbers: numbers,
         }
       );
