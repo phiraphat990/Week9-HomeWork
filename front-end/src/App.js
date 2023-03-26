@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import "./App.css";
 import axios from "axios";
 import { useState } from "react";
@@ -13,7 +14,6 @@ function App() {
   const [FirstName, setFirstName] = useState("");
   const [LastName, setLastName] = useState("");
   const [Number, setNumber] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   const handleChange = (e) => {
     var reader = new FileReader();
@@ -28,18 +28,16 @@ function App() {
     console.log(window.location.hostname);
 
     try {
-      setLoading(true);
       const res = await axios.post(
         "http://" + window.location.hostname + ":8088/process-image",
         {
           image: InputImage,
           first_name: FirstName,
           last_name: LastName,
-          numbers: Number,
+          numbers: numbers,
         }
       );
       setOutputImage(res.data.processed_image);
-      setLoading(false);
     } catch (err) {
       console.log(err);
       alert("Plese try again.");
